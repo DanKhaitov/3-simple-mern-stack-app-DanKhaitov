@@ -78,5 +78,22 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+app.get('/about', async (req, res) => {
+  try {
+    return res.json(
+      {
+        about: "Hi, my name is Dan.",
+        imgURL: 'https://static1.srcdn.com/wordpress/wp-content/uploads/2019/05/StewieFeature.jpg'
+      }
+    )
+  } catch (error) {
+    console.error(err)
+    return res.status(400).json({
+      error: err,
+      status: 'failed to display about us page',
+    })
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
